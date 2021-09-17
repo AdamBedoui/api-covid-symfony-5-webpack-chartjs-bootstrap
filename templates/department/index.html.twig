@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les chiffres du COVID-19|{{ data.LiveDataByDepartement.0.nom }}
+{% endblock %}
+
+{% block body %}
+	<div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+		<h1 class="display-4">Les chiffres du COVID-19 -
+			{{ data.LiveDataByDepartement.0.nom }}</h1>
+		<p class="lead">Source :
+			{{ data.LiveDataByDepartement.0.sourceType }}</p>
+		<p class="lead">Date d'actualisation :
+			{{ data.LiveDataByDepartement.0.date }}</p>
+	</div>
+
+	<div class="card mb-5 shadow-lg">
+		<div class="card-body">
+			{{ render_chart(chart) }}
+		</div>
+	</div>
+
+
+	<div class="row text-center">
+		<div class="col">
+			<div class="card mb-4 shadow-sm mt-4">
+				<div class="card-header">
+					<h4 class="my-0 fw-normal">Nombre d’hospitalisations</h4>
+				</div>
+				<div class="card-body">
+					<h1 class="card-title pricing-card-title">{{ data.LiveDataByDepartement.0.hospitalises }}</h1>
+				</div>
+			</div>
+		</div>
+		<div class="col">
+			<div class="card mb-4 shadow-sm mt-4">
+				<div class="card-header">
+					<h4 class="my-0 fw-normal">Nombre de personnes réa</h4>
+				</div>
+				<div class="card-body">
+					<h1 class="card-title pricing-card-title">{{ data.LiveDataByDepartement.0.reanimation }}</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
